@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Simba Weather App</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="border">
+        <form class="mb-4" id="search-city">
+          <div class="row">
+            <div class="col-9">
+              <input
+                type="search"
+                class="form-control"
+                placeholder="Enter a city ..."
+                id="enter-city"
+                width="100%"
+              />
+            </div>
+            <div class="col-3">
+              <button type="submit" class="btn btn-primary" id="search-button">
+                Search
+              </button>
+            </div>
+          </div>
+        </form>
+        <div class="row">
+          <div class="col-6">
+            <h1 id="city-name"></h1>
+            <ul>
+              <li>
+                <span class="cityInfo"
+                  ><span id="current-day"></span> <span id="hours"></span>:<span
+                    id="minutes"
+                  ></span
+                ></span>
+              </li>
+              <li>
+                <span class="cityInfo" id="weather-icon"></span>
+              </li>
+            </ul>
+          </div>
+          <div class="col-2">
+            <img class="mainEmoji" id="icon" src="" alt="" width="110px" />
+          </div>
+          <div class="col-4">
+            <span id="city-temp"></span>
+            <span class="units"
+              ><a href="#" target="_blank" class="active" id="celsius-link"
+                >°C</a
+              >
+              |
+              <a href="#" target="_blank" id="farenheit-link">°F</a></span
+            >
+            <ul>
+              <li class="details">
+                <span class="cityWeather"
+                  >Humidity:<span id="humidity"></span>%</span
+                >
+              </li>
+              <li class="details">
+                <span class="cityWeather"
+                  >Wind: <span id="wind"></span> km/h</span
+                >
+              </li>
+              <!-- <li class="details">
+                <span class="cityWeather">pericipitation: 1%</span>
+              </li> -->
+            </ul>
+          </div>
+        </div>
+        <div class="weatherForcast">
+          <div class="row">
+            <div class="col-2">
+              <div class="nextDay">Fri</div>
+              <div class="forcastIcon">
+                <img
+                  src="https://ssl.gstatic.com/onebox/weather/48/sunny.png"
+                  alt="sunny"
+                  width="46px"
+                />
+              </div>
+              <span class="maxTemp">7°</span>
+              <span class="minTemp">-2°</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <a
+          href="https://github.com/nasimlzadeh/Simb-Weather-app"
+          target="_blank"
+          >Open Source Code</a
+        >
+        by Nasim L.Zadeh
+      </div>
+    </div>
+  </body>
+  <script src="src/index.js"></script>
+</html>
