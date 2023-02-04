@@ -1,3 +1,34 @@
+function fiveDayForcast(day) {
+  let nextDayForcast = document.querySelector("#forcast");
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let i = 0;
+  // let periodLength=5
+  let forcastWeather = `<div class="row">`;
+  for (i; i < 5; i++) {
+    forcastWeather =
+      forcastWeather +
+      `
+              <div class="col-2">
+              <div class="nextDay">${days[day]}</div>
+              <div class="forcastIcon">
+                <img
+                  src="https://ssl.gstatic.com/onebox/weather/48/sunny.png"
+                  alt="sunny"
+                  width="46px"
+                />
+              </div>
+              <span class="maxTemp">7°</span>
+              <span class="minTemp">-2°</span>
+            </div>
+                  `;
+    day = day + 1;
+    if (day + 1 > 6) {
+      day = 0;
+    }
+  }
+
+  nextDayForcast.innerHTML = forcastWeather + `</div>`;
+}
 function showInfo(response) {
   //   console.log(response);
   celsiusTemp = response.data.main.temp;
@@ -41,6 +72,7 @@ function showInfo(response) {
     correctMinutes = `0${correctMinutes}`;
   }
   minutes.innerHTML = correctMinutes;
+  fiveDayForcast(timestamp.getDay());
 }
 function search(city) {
   let apiKey = "d44a337dcba067ff8eff53da085f3633";
