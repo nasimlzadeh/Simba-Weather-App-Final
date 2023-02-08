@@ -113,29 +113,7 @@ function getCity(event) {
   let desiredCity = document.querySelector("#enter-city");
   search(desiredCity.value);
 }
-function showFarenheit(event) {
-  event.preventDefault();
-  let convertedUnit = (celsiusTemp * 9) / 5 + 32;
-  let tempElement = document.querySelector("#city-temp");
-  tempElement.innerHTML = Math.round(convertedUnit);
-  //   alert(`Temp is ${tempElement}`);
-  farenheitUnit.classList.add("active");
-  celsiusUnit.classList.remove("active");
-}
-function showCelsius(event) {
-  event.preventDefault();
-  let tempElement = document.querySelector("#city-temp");
-  tempElement.innerHTML = Math.round(celsiusTemp);
-  celsiusUnit.classList.add("active");
-  farenheitUnit.classList.remove("active");
-}
-celsiusTemp = null;
 let submitedCity = document.querySelector("#search-city");
 submitedCity.addEventListener("submit", getCity);
-// let submitedCity = document.querySelector("#search-button");
-// submitedCity.addEventListener("click", getCity);
-let celsiusUnit = document.querySelector("#celsius-link");
-celsiusUnit.addEventListener("click", showCelsius);
-let farenheitUnit = document.querySelector("#farenheit-link");
-farenheitUnit.addEventListener("click", showFarenheit);
+
 search("tehran");
