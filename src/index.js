@@ -22,15 +22,18 @@ function fiveDayForcast(day) {
             </div>
                   `;
     day = day + 1;
-    if (day + 1 > 6) {
+    if (day + 1 > 7) {
       day = 0;
     }
   }
 
   nextDayForcast.innerHTML = forcastWeather + `</div>`;
 }
+function futureForcast(response) {
+  console.log(response);
+}
 function showInfo(response) {
-  //   console.log(response);
+  // console.log(response);
   celsiusTemp = response.data.main.temp;
   let tempElement = document.querySelector("#city-temp");
   tempElement.innerHTML = Math.round(celsiusTemp);
@@ -73,11 +76,24 @@ function showInfo(response) {
   }
   minutes.innerHTML = correctMinutes;
   fiveDayForcast(timestamp.getDay());
+  getCoord(response);
+}
+function getCoord(response) {
+  let apiKey = "ca0db41e2e878c74a1dfc7ffece370d4";
+  let cityLon = response.data.coord.lon;
+  let cityLat = response.data.coord.lat;
+  // console.log(cityLon);
+  // console.log(cityLat);
+  let forcastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=35&lon=${cityLon}&appid=${apiKey}&units=metric`;
+  // let forcastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&appid=${key}&units=metric`;
+  // console.log(forcastUrl);
+  axios.get(forcastUrl).then(futureForcast);
 }
 function search(city) {
-  let apiKey = "d44a337dcba067ff8eff53da085f3633";
+  let apiKey = "ca0db41e2e878c74a1dfc7ffece370d4";
   let cityName = city;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
+
   axios.get(apiUrl).then(showInfo);
 }
 function getCity(event) {
